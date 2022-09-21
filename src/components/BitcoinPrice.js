@@ -15,7 +15,7 @@ const BitcoinPrice = () => {
           const response = await axios.get(URL);
           setPrice(response.data.bpi);
           setIsLoaded(true);
-        }, 10000);
+        }, 2000);
 
         return () => {
           clearInterval(interval);

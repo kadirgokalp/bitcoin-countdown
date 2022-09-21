@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { MdTimer } from 'react-icons/md';
 
 const Counter = () => {
@@ -6,22 +6,17 @@ const Counter = () => {
   const [timerHours, setTimerHours] = useState('00');
   const [timerMinutes, setTimerMinutes] = useState('00');
   const [timerSeconds, setTimerSeconds] = useState('00');
-  //const [distance, setDistance] = useState(36000000);
+  const delta = useRef(0);
   let interval;
 
   var countDownDate = new Date();
   countDownDate.setHours(countDownDate.getHours() + 10);
 
-  const startTimer = () => {
+  useEffect(() => {
     interval = setInterval(() => {
       const now = new Date().getTime();
-      let distance = countDownDate - now;
-      //console.log(distance);
+      let distance = countDownDate - now + delta.current;
 
-      // setStateDistance(distance);
-      // stateDistance != distance ? setStateDistance(distance) : void 0;
-      // console.log('distance:', distance);
-      // console.log('Statedistance:', stateDistance);
       const days = Math.floor(distance / (24 * 60 * 60 * 1000));
       const hours = Math.floor(
         (distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
@@ -40,51 +35,34 @@ const Counter = () => {
         setTimerSeconds(seconds);
       }
     }, 1000);
-  };
-
-  useEffect(() => {
-    startTimer();
-  }, []);
+  }, [delta]);
 
   const increaseDays = () => {
-    // setStateDistance(stateDistance + 60000 * 60 * 60);
-    //-------
-    setTimerDays(parseInt(timerDays, 10) + 1);
-    //countDownDate.setHours(countDownDate.getHours() + 24);
+    delta.current = delta.current + 86400000;
   };
   const decreaseDays = () => {
-    if (parseInt(timerDays, 10) > 0) {
-      setTimerDays(parseInt(timerDays, 10) - 1);
-    }
+    delta.current = delta.current - 86400000;
   };
 
   const increaseHours = () => {
-    setTimerHours(parseInt(timerHours, 10) + 1);
-    // setTimerHours(countDownDate.setHours(countDownDate.getHours() + 1));
-    //setDistance(distance + 3600000);
+    delta.current = delta.current + 3600000;
   };
   const decreaseHours = () => {
-    if (parseInt(timerHours, 10) > 0) {
-      setTimerHours(parseInt(timerHours, 10) - 1);
-    }
+    delta.current = delta.current - 3600000;
   };
 
   const increaseMinutes = () => {
-    setTimerMinutes(parseInt(timerMinutes, 10) + 1);
+    delta.current = delta.current + 60000;
   };
   const decreaseMinutes = () => {
-    if (parseInt(timerMinutes, 10) > 0) {
-      setTimerMinutes(parseInt(timerMinutes, 10) - 1);
-    }
+    delta.current = delta.current - 60000;
   };
 
   const increaseSeconds = () => {
-    setTimerSeconds(parseInt(timerSeconds, 10) + 1);
+    delta.current = delta.current + 1000;
   };
   const decreaseSeconds = () => {
-    if (parseInt(timerSeconds, 10) > 0) {
-      setTimerSeconds(parseInt(timerSeconds, 10) - 1);
-    }
+    delta.current = delta.current - 1000;
   };
 
   return (
