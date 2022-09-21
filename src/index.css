@@ -1,13 +1,164 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url('./assets/bitcoin-bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #333;
+  height: 70px;
+}
+
+.header-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  margin: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-weight: bold;
+  font-size: 20px;
+  font-style: italic;
+  color: #fff;
+}
+
+.counter-container {
+  height: 50vh;
+  color: #fff;
+}
+
+.timer-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 7rem;
+  padding-top: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.timer-headers {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.timer-headers p {
+  color: #f8f8f8;
+}
+
+.timer-icon {
+  font-size: 4rem;
+  margin-top: 30px;
+}
+
+.timer-title {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.timer {
+  border: 1px solid #fff;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: repeat(7, 0.8fr);
+  margin-top: 2rem;
+  padding: 1.5rem;
+  text-align: center;
+  width: 1100px;
+  height: 25vh;
+}
+
+.timer p {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  width: 40px;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 5px;
+  height: 20px;
+}
+
+.plusButton {
+  background-color: darkgreen;
+  color: #fff;
+  border-radius: 20%;
+  border: none;
+}
+
+.plusButton:hover {
+  background-color: green;
+}
+
+.minusButton {
+  background-color: darkred;
+  color: #fff;
+  border-radius: 20%;
+  border: none;
+  padding-bottom: 2px;
+  text-align: center;
+}
+
+.minusButton:hover {
+  background-color: red;
+}
+
+.prices-container {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 50vh;
+}
+
+.currency {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.price {
+  border-style: none;
+  width: 1100px;
+  margin: 15px;
+  border-radius: 30px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  background-color: #333;
+}
+
+.price:hover {
+  transform: scale(1.04);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: darkslategray;
+}
+
+.price-icon {
+  height: 20px;
 }
